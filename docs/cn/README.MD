@@ -78,10 +78,10 @@ ls /dev/ttyACM*
 ```
 
 AlohaMini的默认插入顺序：
-左引导臂（Left Leader），对应ACM0
-左跟随臂(Left Follower)，对应ACM1
-右引导臂（Right Leader），对应ACM2
-右跟随臂(Right Follower)，对应ACM3
+- 左引导臂（Left Leader），对应ACM0
+- 左跟随臂(Left Follower)，对应ACM1
+- 右引导臂（Right Leader），对应ACM2
+- 右跟随臂(Right Follower)，对应ACM3
 
 如果不按此顺序插入USB接口，需要手工修改lerobot/configs/robot/so100_bimanual.yaml文件，改为相应的端口号。
 
@@ -89,7 +89,7 @@ AlohaMini的默认插入顺序：
 
 ### 6. 配置摄像头端口号
 
-1. 运行如下命令，会自动调取摄像头进行拍照，在outputs目录生成诸如camera_06_frame_000002.png这样的文件，这里面的6就是摄像头序号
+#### 1. 运行如下命令，会自动调取摄像头进行拍照，在outputs目录生成诸如camera_06_frame_000002.png这样的文件，这里面的6就是摄像头序号
 ```
 cd ~/lerobot_alohamini
 
@@ -98,12 +98,14 @@ python lerobot/common/robot_devices/cameras/opencv.py \
 
 ```
 
-注1：Ubuntu系统上的默认规律是先插入的是0，第二个插入的是2，然后是4，6
-注2：多个摄像头不能插在一个Hub上，1个Hub上仅支持1个摄像头
-注3：笔记本电脑通常都自带一个默认摄像头，这个摄像头我们用不上，忽略掉它即可
-注4：每次重启电脑后，都要执行该操作
+注意：
+- Ubuntu系统上的默认规律是先插入的是0，第二个插入的是2，然后是4，6
+- 多个摄像头不能插在一个Hub上，1个Hub上仅支持1个摄像头
+- 笔记本电脑通常都自带一个默认摄像头，这个摄像头我们用不上，忽略掉它即可
+- 每次重启电脑后，都要执行该操作
 
-2. 修改configs/robot/so100_bimanual.yaml，配置为正确的摄像头序号
+
+#### 2. 修改configs/robot/so100_bimanual.yaml，配置为正确的摄像头序号
 
 ### 7. 摇操测试
 当插好机械臂和摄像头，并确认端口号无误后，我们就可以进行摇操测试了
@@ -131,11 +133,11 @@ python lerobot/scripts/eval.py -p lerobot/diffusion_pusht eval.n_episodes=10 eva
 ```
 
 不同硬件的耗时参考如下：
-macos i7 model-cpu  1178s
-ubuntu i7m model-cpu 2427s
-macos M1 model-mps  706s（报错） //ValueError: cannot convert float NaN to integer
-macos M1 model-cpu  3237s
-widnows i7m+4070M model-cuda 228s
+- macos i7 model-cpu  1178s
+- ubuntu i7m model-cpu 2427s
+- macos M1 model-mps  706s（报错） //ValueError: cannot convert float NaN to integer
+- macos M1 model-cpu  3237s
+- ubuntu i7m+4070M model-cuda 228s
 
 
 ### 9. 收集训练集

@@ -138,11 +138,11 @@ python lerobot/scripts/eval.py -p lerobot/diffusion_pusht eval.n_episodes=10 eva
 ```
 
 Below are reference run times for different hardware:
-macos i7 model-cpu  1178s
-ubuntu i7m model-cpu 2427s
-macos M1 model-mps  706s（error） //ValueError: cannot convert float NaN to integer
-macos M1 model-cpu  3237s
-widnows i7m+4070M model-cuda 228s
+- macos i7 model-cpu  1178s
+- ubuntu i7m model-cpu 2427s
+- macos M1 model-mps  706s（error） //ValueError: cannot convert float NaN to integer
+- macos M1 model-cpu  3237s
+- ubuntu i7m+4070M model-cuda 228s
 
 
 ### 9. Collect Training Data
