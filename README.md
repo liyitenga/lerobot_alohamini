@@ -1,5 +1,5 @@
 
-## English | [中文说明](docs/cn/README.MD)
+## English | [中文说明](docs/cn/README.md)
 
 
 AlohaMini is a training suite for the Aloha robot, developed based on LeRobot and SO100. It integrates both hardware and software and is specifically designed for research and educational purposes. This suite comes with 2 leader arms, 2 follower arms, and 3 cameras, all mounted on a square wooden board. Compared with LeRobot, AlohaMini significantly enhances debugging capabilities and standardizes data collection.

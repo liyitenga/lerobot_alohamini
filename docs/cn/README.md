@@ -1,5 +1,5 @@
 
-## English | [中文说明](docs/cn/README.MD)
+## [English](../../README.md)| 中文说明
 
 AlohaMini 是一款基于 LeRobot 和 SO100 打造的 Aloha 机器人训练套件，集成了软件与硬件，专为科研与教学应用设计。该套件配备了 2 个leader臂、2 个follower臂以及 3 个摄像头，整体固定于一个方形木板上。相较于 LeRobot，AlohaMini 不仅显著增强了调试能力，还统一了数据采集标准。
 
