@@ -44,12 +44,14 @@ def evaluate_expression(expression, variables):
         return None
     
 
-def move_motors_by_script(port, actions_file='motor_actions.txt'):
+def move_motors_by_script(actions_file, port):
 
     # Get the directory where the current script file is located and construct an absolute path
     script_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(script_dir, actions_file)
-
+    print(f"actions_file:{actions_file}")
+    print(f"script_dir:{script_dir}")
+    print(f"file_path:{file_path}")
     motors_bus = FeetechMotorsBus(
         port=port,
         motors=motors,
@@ -578,7 +580,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Motor configuration")
 
     parser.add_argument('command', choices=['reset_motors_to_midpoint', 'reset_motors_torque','get_motors_states', 'position_to_angle_with_offset',
-                                            'configure_motor_id','get_motors_id','move_motors_by_code','move_motors_by_script','move_motor_to_position'],
+                                            'set_motor_id','get_motors_id','move_motors_by_code','move_motors_by_script','move_motor_to_position'],
                     help="Command to execute")
     
     parser.add_argument('--port', type=str, default=DEFAULT_PORT, 
@@ -590,6 +592,7 @@ if __name__ == "__main__":
     parser.add_argument("--simple", type=str, default= 'flase', help="")
     parser.add_argument("--offset_str", type=str, help="")
     parser.add_argument("--position", type=str, help="")
+    parser.add_argument("--actions_file", type=str, help="")
 
     
     args = parser.parse_args()
@@ -620,6 +623,6 @@ if __name__ == "__main__":
     elif args.command == 'move_motors_by_code':
         move_motors_by_code(args.port)
     elif args.command == 'move_motors_by_script':
-        move_motors_by_script(args.port)
+        move_motors_by_script(args.actions_file,args.port)
     elif args.command == 'move_motor_to_position':
         move_motor_to_position(args.port,args.id,args.position)
