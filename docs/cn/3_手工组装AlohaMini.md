@@ -80,18 +80,18 @@ python lerobot/scripts/find_motors_bus_port.py
 3. 重启电脑，以让权限生效
 
 
-## 2. 给电机编号
+## 2-快速设置sts3215电机编号
 
 准备工作：我们准备好6个sts3215电机
 
 为什么要给电机编号？
-因为电机默认是1号，插入2个1号电机，会导致motors总线异常
+因为电机默认是1号，同时插入2个1号电机，会导致motors总线异常
 
 给电机编号一共3个方法：
-1、Windows下使用feetch调试软件
+- 1、Windows下使用feetech调试软件（不推荐）
 问题：每次都要在windows和ubuntu之间切换，比较烦人
 
-2、用lerobot自带的设置脚本
+- 2、用lerobot自带的设置脚本（不推荐）
 ```
 python lerobot/scripts/configure_motor.py \
   --port /dev/ttyACM0 \
@@ -100,9 +100,9 @@ python lerobot/scripts/configure_motor.py \
   --baudrate 1000000 \
   --ID 2
 ```
-  问题：每次只能编1个号，就要拔掉重连
+  问题：每次只能编1个号，就要拔掉重连，也很烦人
 
-  3、用lerobot_alohamini自带的设置脚本
+- 3、用lerobot_alohamini自带的设置脚本（推荐）
 
 //获取所有电机状态
 ` 
