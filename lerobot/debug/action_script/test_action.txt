@@ -1,3 +1,0 @@
-shoulder_lift, read, ID
-shoulder_lift, read, Present_Position
-shoulder_lift, write, Goal_Position, 2048

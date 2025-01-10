@@ -44,12 +44,12 @@ def evaluate_expression(expression, variables):
         return None
     
 
-def move_motors_by_script(actions_file, port):
+def move_motors_by_script(script_path, port):
 
     # Get the directory where the current script file is located and construct an absolute path
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(script_dir, actions_file)
-    print(f"actions_file:{actions_file}")
+    file_path = os.path.join(script_dir, script_path)
+    print(f"script_path:{script_path}")
     print(f"script_dir:{script_dir}")
     print(f"file_path:{file_path}")
     motors_bus = FeetechMotorsBus(
@@ -156,7 +156,7 @@ def move_motors_by_script(actions_file, port):
         motors_bus.disconnect()
         print(f"Disconnected from port {port}")
 
-    print(f"Completed executing actions from {actions_file}")
+    print(f"Completed executing actions from {script_path}")
 
 
 def move_motors_by_code(port):
@@ -592,7 +592,7 @@ if __name__ == "__main__":
     parser.add_argument("--simple", type=str, default= 'flase', help="")
     parser.add_argument("--offset_str", type=str, help="")
     parser.add_argument("--position", type=str, help="")
-    parser.add_argument("--actions_file", type=str, help="")
+    parser.add_argument("--script_path", type=str, help="")
 
     
     args = parser.parse_args()
@@ -623,6 +623,6 @@ if __name__ == "__main__":
     elif args.command == 'move_motors_by_code':
         move_motors_by_code(args.port)
     elif args.command == 'move_motors_by_script':
-        move_motors_by_script(args.actions_file,args.port)
+        move_motors_by_script(args.script_path,args.port)
     elif args.command == 'move_motor_to_position':
         move_motor_to_position(args.port,args.id,args.position)
