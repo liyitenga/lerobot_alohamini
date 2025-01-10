@@ -580,7 +580,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Motor configuration")
 
     parser.add_argument('command', choices=['reset_motors_to_midpoint', 'reset_motors_torque','get_motors_states', 'position_to_angle_with_offset',
-                                            'set_motor_id','get_motors_id','move_motors_by_code','move_motors_by_script','move_motor_to_position'],
+                                            'configure_motor_id','get_motors_id','move_motors_by_code','move_motors_by_script','move_motor_to_position'],
                     help="Command to execute")
     
     parser.add_argument('--port', type=str, default=DEFAULT_PORT, 
