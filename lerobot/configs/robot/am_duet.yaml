@@ -1,0 +1,89 @@
+# [SO-100 robot arm](https://github.com/TheRobotStudio/SO-ARM100)
+
+# Requires installing extras packages
+# With pip: `pip install -e ".[feetech]"`
+# With poetry: `poetry install --sync --extras "feetech"`
+
+# See [tutorial](https://github.com/huggingface/lerobot/blob/main/examples/10_use_so100.md)
+
+_target_: lerobot.common.robot_devices.robots.manipulator.ManipulatorRobot
+robot_type: so100
+calibration_dir: .cache/calibration/am_duet
+
+# `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.
+# Set this to a positive scalar to have the same value for all motors, or a list that is the same length as
+# the number of motors in your follower arms.
+max_relative_target: null
+
+leader_arms:
+  left:
+    _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+    port: /dev/ttyACM0
+    motors:
+      # name: (index, model)
+      shoulder_pan: [6, "sts3215"]
+      shoulder_lift: [5, "sts3215"]
+      elbow_flex: [4, "sts3215"]
+      wrist_flex: [3, "sts3215"]
+      wrist_roll: [2, "sts3215"]
+      gripper: [1, "sts3215"]
+      
+  right:
+    _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+    port: /dev/ttyACM2
+    motors:
+      # name: (index, model)
+      shoulder_pan: [6, "sts3215"]
+      shoulder_lift: [5, "sts3215"]
+      elbow_flex: [4, "sts3215"]
+      wrist_flex: [3, "sts3215"]
+      wrist_roll: [2, "sts3215"]
+      gripper: [1, "sts3215"]
+      
+follower_arms:
+  left:
+    _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+    port: /dev/ttyACM1
+    motors:
+      # name: (index, model)
+      shoulder_pan: [6, "sts3215"]
+      shoulder_lift: [5, "sts3215"]
+      elbow_flex: [4, "sts3215"]
+      wrist_flex: [3, "sts3215"]
+      wrist_roll: [2, "sts3215"]
+      gripper: [1, "sts3215"]
+      
+  right:
+    _target_: lerobot.common.robot_devices.motors.feetech.FeetechMotorsBus
+    port: /dev/ttyACM3
+    motors:
+      # name: (index, model)
+      shoulder_pan: [6, "sts3215"]
+      shoulder_lift: [5, "sts3215"]
+      elbow_flex: [4, "sts3215"]
+      wrist_flex: [3, "sts3215"]
+      wrist_roll: [2, "sts3215"]
+      gripper: [1, "sts3215"]
+cameras:
+
+  center:
+    _target_: lerobot.common.robot_devices.cameras.opencv.OpenCVCamera
+    camera_index: 2
+    fps: 30
+    width: 640
+    height: 480
+
+  left_follower:
+    _target_: lerobot.common.robot_devices.cameras.opencv.OpenCVCamera
+    camera_index: 4
+    fps: 30
+    width: 640
+    height: 480
+
+  right_follower:
+    _target_: lerobot.common.robot_devices.cameras.opencv.OpenCVCamera
+    camera_index: 6
+    fps: 30
+    width: 640
+    height: 480
+
