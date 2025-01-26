@@ -40,4 +40,5 @@ jobs:
       - name: Force push rebased changes to origin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push --force-with-lease origin main
+        run: git push --force-with-lease "https://x-access-token:${GITHUB_TOKEN}@github.com/liyitenga/lerobot_alohamini.git" main
+             
