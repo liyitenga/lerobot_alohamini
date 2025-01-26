@@ -1,4 +1,4 @@
-//查看所有电机状态
+//查看所有舵机状态
 ```
 python lerobot/debug/motors.py get_motors_states \
   --port /dev/ttyACM0
