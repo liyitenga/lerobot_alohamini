@@ -64,7 +64,12 @@ jobs:
       - name: Commit merge
         if: steps.conflict_check.outcome == 'success'
         run: |
-          git commit -m "Merged upstream changes; resolved README.md conflicts if present"
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Merged upstream changes; resolved README.md conflicts if present"
+          fi
+
 
       - name: Push changes to origin
         if: steps.conflict_check.outcome == 'success'
