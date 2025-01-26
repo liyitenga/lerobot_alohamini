@@ -36,4 +36,6 @@ AlohaMini Solo产品清单
 [1-Lerobot_AlohaMini环境配置](https://www.bilibili.com/video/BV1GQreYhEy1/?vd_source=a8dcb8b283f495e4a6a39594ac0cc22e)
 [6-lerobot配置相机与模型训练](https://www.bilibili.com/video/BV1HXw6e2EMo/?vd_source=a8dcb8b283f495e4a6a39594ac0cc22e)
 
-因为我们是成品机械臂，视频2-5段可以直接跳过。
+补充说明：
+ - 因为我们是成品机械臂，视频2-5段可以直接跳过。
+ - 视频中使用的配置文件是so100.yaml，成品臂的配置文件是am_solo.yaml，注意替换。
