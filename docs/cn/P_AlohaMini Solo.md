@@ -23,3 +23,8 @@ AlohaMini Solo产品清单
 [debug命令汇总](3_debug命令汇总.md)
 [故障处理](4_故障处理.md)
 
+视频资料：
+[1-Lerobot_AlohaMini环境配置](https://www.bilibili.com/video/BV1GQreYhEy1/?vd_source=a8dcb8b283f495e4a6a39594ac0cc22e)
+[6-lerobot配置相机与模型训练](https://www.bilibili.com/video/BV1HXw6e2EMo/?vd_source=a8dcb8b283f495e4a6a39594ac0cc22e)
+
+因为我们是成品机械臂，视频2-5段可以直接跳过。
