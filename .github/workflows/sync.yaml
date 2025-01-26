@@ -33,7 +33,7 @@ jobs:
           git merge upstream/main || true
 
       - name: Resolve README.md conflicts
-        if: success() || failure()
+        if: ${{ always() }}
         run: |
           # 检查冲突文件是否包含 README.md
           if git diff --name-only --diff-filter=U | grep -q 'README.md'; then
@@ -55,6 +55,11 @@ jobs:
           else
             echo "No remaining conflicts."
           fi
+
+      - name: Print conflict check outcome
+        run: |
+          echo "Conflict check outcome: ${{ steps.conflict_check.outcome }}"
+
 
       - name: Commit merge
         if: steps.conflict_check.outcome == 'success'
