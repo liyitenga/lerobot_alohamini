@@ -30,6 +30,12 @@ jobs:
         run: |
           git checkout main
           git rebase upstream/main
+          
+      - name: Set up Git credentials
+        run: |
+          git config --global credential.helper store
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
 
       - name: Force push rebased changes to origin
         env:
