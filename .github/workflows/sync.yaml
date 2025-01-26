@@ -28,7 +28,15 @@ jobs:
       - name: Merge changes from upstream
         run: |
           git merge -X ours upstream/main || true
+          git diff > conflict-details.log
 
       - name: Push changes to origin
         run: |
           git push origin main
+          
+      - name: Upload conflict log artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: conflict-details-log
+          path: conflict-details.log
