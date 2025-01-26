@@ -25,18 +25,48 @@ jobs:
           git remote add upstream https://github.com/huggingface/lerobot.git
           git fetch upstream
 
-      - name: Merge changes from upstream
+
+      - name: Attempt to merge changes from upstream
+        id: merge
         run: |
-          git merge -X ours upstream/main || true
-          git diff > conflict-details.log
+          # 尝试合并，不提交，捕获冲突
+          git merge upstream/main || true
+
+      - name: Resolve README.md conflicts
+        if: success() || failure()
+        run: |
+          # 检查冲突文件是否包含 README.md
+          if git diff --name-only --diff-filter=U | grep -q 'README.md'; then
+            # 保留本地版本的 README.md
+            git checkout --ours README.md
+            git add README.md
+            echo "README.md conflict resolved: using local version."
+          else
+            echo "No conflicts in README.md."
+          fi
+
+      - name: Check for remaining conflicts
+        id: conflict_check
+        run: |
+          # 检查是否还有未解决的冲突
+          if git diff --name-only --diff-filter=U | grep -q '.'; then
+            echo "There are unresolved conflicts. Please resolve them manually."
+            exit 1
+          else
+            echo "No remaining conflicts."
+          fi
+
+      - name: Commit merge
+        if: steps.conflict_check.outcome == 'success'
+        run: |
+          git commit -m "Merged upstream changes; resolved README.md conflicts if present"
 
       - name: Push changes to origin
+        if: steps.conflict_check.outcome == 'success'
         run: |
           git push origin main
-          
-      - name: Upload conflict log artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: conflict-details-log
-          path: conflict-details.log
+
+      - name: Notify about unresolved conflicts
+        if: steps.conflict_check.outcome == 'failure'
+        run: |
+          echo "Unresolved conflicts require manual intervention."
