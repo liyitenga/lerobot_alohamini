@@ -50,10 +50,10 @@ huggingface-cli login --token {key} --add-to-git-credential
 ```
 
 
-//resume 0 代表全新数据集  1代表续传
-//repo-id 在huggingface网站上的创建的仓库名称，如果是第一次录则自动创建
-//root 数据集在本地的存储路径，显示指定，方便日后上传到远程服务器训练
-//push-to-hub 是否上传到huggingface网站，0不上传，1上传
+//resume 0 代表全新数据集  1代表续传  
+//repo-id 在huggingface网站上的创建的仓库名称，如果是第一次录则自动创建  
+//root 数据集在本地的存储路径，显示指定，方便日后上传到远程服务器训练  
+//push-to-hub 是否上传到huggingface网站，0不上传，1上传  
 
 
 #### 可视化
