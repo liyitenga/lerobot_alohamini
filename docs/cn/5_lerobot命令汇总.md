@@ -83,12 +83,7 @@ python lerobot/scripts/control_robot.py replay \
 ```
 
 #### 远程训练
- //学术加速
-```
- source /etc/network_turbo
-```
 
-//远程训练
 ```
     HYDRA_FULL_ERROR=1 python lerobot/scripts/train.py \
     dataset_repo_id=liyitenga/so100_pick_taffy7 \
