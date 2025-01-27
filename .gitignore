@@ -1,3 +1,7 @@
+#alohamini add
+.github/workflows/
+.gitignore
+
 # Logging
 logs
 tmp
